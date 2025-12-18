@@ -2,6 +2,8 @@
 
 Landing page moderna y responsive para la plataforma de publicación Blogr, desarrollada como parte del reto de [Frontend Mentor](https://www.frontendmentor.io/challenges/blogr-landing-page-EX2RLAApP).
 
+<img width="648" height="857" alt="image" src="https://github.com/user-attachments/assets/3df58ffe-f9b2-4856-94af-b198a7dcd3bc" />
+
 ## 📋 Descripción
 
 Este proyecto es una landing page completamente funcional que presenta Blogr, una plataforma moderna de publicación. El diseño está optimizado para dispositivos móviles, tablets y escritorio, implementando las mejores prácticas de HTML semántico y CSS moderno.
