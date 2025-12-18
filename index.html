@@ -1,163 +1,272 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es"> <!-- Idioma del documento: español -->
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
-  <title>Frontend Mentor | Blogr</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@300;600&family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- ========================================
+       META INFORMACIÓN Y CONFIGURACIÓN
+       ======================================== -->
+  
+  <meta charset="UTF-8"> <!-- Codificación de caracteres: UTF-8 (soporta todos los caracteres) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configuración responsive: ancho del dispositivo, escala inicial 1 -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png"> <!-- Favicon: ícono de 32x32px en formato PNG -->
+  <title>Frontend Mentor | Blogr</title> <!-- Título de la página (aparece en la pestaña del navegador) -->
+  
+  <!-- ========================================
+       ESTILOS Y FUENTES
+       ======================================== -->
+  
+  <link rel="stylesheet" href="style.css"> <!-- Hoja de estilos principal -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"> <!-- Preconecta a Google Fonts para mejorar rendimiento -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!-- Preconecta al servidor de fuentes con CORS -->
+  <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@300;600&family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet"> <!-- Importa fuentes Overpass (300, 600) y Ubuntu (400, 500, 700) con swap display -->
 </head>
+
 <body>
-<nav aria-label="Primary navigation">
-  <div class="container nav-container">
-    <a href="/" aria-label="Go to homepage">
-      <img src="/assets/images/logo.svg" alt="Blogr Logo">
-    </a>
-    <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Toggle mobile menu">
-    <label for="menu-toggle" class="btn--menu"></label>
-    <ul role="menubar" class="nav-links--main">
-      <li role="none">
-        <a href="#" role="menuitem" class="nav-link--main">Product</a>
-        <ul class="nav-sublinks">
-          <li>Overview</li>
-          <li>Pricing</li>
-          <li>Marketplace</li>
-          <li>Features</li>
-          <li>Integrations</li>
-        </ul>
-      </li>
-      <li role="none">
-        <a href="#" role="menuitem" class="nav-link--main">Company</a>
-        <ul class="nav-sublinks">
-          <li>About</li>
-          <li>Team</li>
-          <li>Blog</li>
-          <li>Careers</li>
-        </ul>
-      </li>
-      <li role="none" class="right-me">
-        <a href="#" role="menuitem" class="nav-link--main">Connect</a>
-        <ul class="nav-sublinks">
-          <li>Contact</li>
-          <li>Newsletter</li>
-          <li>LinkedIn</li>
-        </ul>
-      </li>
-      <li role="none">
-        <a href="#" class="btn btn--outline" role="menuitem">Login</a>
-      </li>
-      <li role="none">
-        <a href="#" class="btn btn--filled" role="menuitem">Sign Up</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+  <!-- ========================================
+       NAVEGACIÓN PRINCIPAL
+       ======================================== -->
+  
+  <!-- Navegación principal con etiqueta aria para accesibilidad -->
+  <nav aria-label="Primary navigation">
+    <!-- Contenedor de navegación con ancho máximo -->
+    <div class="container nav-container">
+      
+      <!-- Logo con enlace al homepage -->
+      <a href="/" aria-label="Go to homepage"> <!-- aria-label describe el propósito del enlace para lectores de pantalla -->
+        <img src="assets/images/logo.svg" alt="Blogr Logo"> <!-- Imagen del logo con texto alternativo -->
+      </a>
+      
+      <!-- Toggle del menú móvil (checkbox oculto) -->
+      <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Toggle mobile menu"> <!-- Checkbox para controlar apertura/cierre del menú móvil -->
+      <label for="menu-toggle" class="btn--menu"></label> <!-- Label vinculado al checkbox, actúa como botón hamburguesa -->
+      
+      <!-- Lista de enlaces principales de navegación -->
+      <ul role="menubar" class="nav-links--main"> <!-- role="menubar" indica que es una barra de menú -->
+        
+        <!-- Item de menú: Product -->
+        <li role="none"> <!-- role="none" elimina el rol semántico de list item -->
+          <a href="#" role="menuitem" class="nav-link--main">Product</a> <!-- role="menuitem" indica que es un item del menú -->
+          <!-- Submenú de Product -->
+          <ul class="nav-sublinks">
+            <li>Overview</li>
+            <li>Pricing</li>
+            <li>Marketplace</li>
+            <li>Features</li>
+            <li>Integrations</li>
+          </ul>
+        </li>
+        
+        <!-- Item de menú: Company -->
+        <li role="none">
+          <a href="#" role="menuitem" class="nav-link--main">Company</a>
+          <!-- Submenú de Company -->
+          <ul class="nav-sublinks">
+            <li>About</li>
+            <li>Team</li>
+            <li>Blog</li>
+            <li>Careers</li>
+          </ul>
+        </li>
+        
+        <!-- Item de menú: Connect (con clase right-me para posicionamiento) -->
+        <li role="none" class="right-me">
+          <a href="#" role="menuitem" class="nav-link--main">Connect</a>
+          <!-- Submenú de Connect -->
+          <ul class="nav-sublinks">
+            <li>Contact</li>
+            <li>Newsletter</li>
+            <li>LinkedIn</li>
+          </ul>
+        </li>
+        
+        <!-- Botón Login -->
+        <li role="none">
+          <a href="#" class="btn btn--outline" role="menuitem">Login</a> <!-- Botón con estilo outline -->
+        </li>
+        
+        <!-- Botón Sign Up -->
+        <li role="none">
+          <a href="#" class="btn btn--filled" role="menuitem">Sign Up</a> <!-- Botón con estilo filled (relleno) -->
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-<header>
-  <div class="grid-sm">
-    <h1 class="h1">A modern publishing platform</h1>
-    <p>Grow your audience and build your online brand</p>
-  </div>
-  <div class="btn-group">
-    <a href="#" class="btn btn--filled">Start for Free</a>
-    <a href="#" class="btn btn--outline">Learn More</a>
-  </div>
-  <img src="assets/images/bg-pattern-intro-desktop.svg" class="bkg" alt="" aria-hidden="true">
-</header>
+  <!-- ========================================
+       HEADER - SECCIÓN HERO
+       ======================================== -->
+  
+  <header>
+    <!-- Contenedor de texto principal con grid -->
+    <div class="grid-sm">
+      <h1 class="h1">A modern publishing platform</h1> <!-- Título principal de la página -->
+      <p>Grow your audience and build your online brand</p> <!-- Subtítulo/descripción -->
+    </div>
+    
+    <!-- Grupo de botones de llamada a la acción -->
+    <div class="btn-group">
+      <a href="#" class="btn btn--filled">Start for Free</a> <!-- Botón primario (relleno) -->
+      <a href="#" class="btn btn--outline">Learn More</a> <!-- Botón secundario (outline) -->
+    </div>
+    
+    <!-- Imagen de fondo decorativa -->
+    <img src="assets/images/bg-pattern-intro-desktop.svg" class="bkg" alt="" aria-hidden="true"> <!-- alt="" y aria-hidden="true" indican que es decorativa -->
+  </header>
 
-<main>
-  <section aria-labelledby="future-designed">
-    <h2 id="future-designed" class="h3">Designed for the future</h2>
-    <div class="flex-reverse container">
-      <div class="text-group flex-child">
-        <div class="grid-sm">
-          <h3 class="h3">Introducing an extensible editor</h3>
-          <p>Blogr features an exceedingly intuitive interface which lets you focus on one thing: creating content. The editor supports management of multiple blogs and allows easy manipulation of embeds such as images, videos, and Markdown. Extensibility with plugins and themes provide easy ways to add functionality or change the looks of a blog.</p>
+  <!-- ========================================
+       MAIN - CONTENIDO PRINCIPAL
+       ======================================== -->
+  
+  <main>
+    
+    <!-- ========================================
+         SECCIÓN: DESIGNED FOR THE FUTURE
+         ======================================== -->
+    
+    <!-- Sección con aria-labelledby vinculado al id del título -->
+    <section aria-labelledby="future-designed">
+      <h2 id="future-designed" class="h3">Designed for the future</h2> <!-- Título de la sección con id para referencia -->
+      
+      <!-- Contenedor flex con orden inverso (imagen después de texto en móvil) -->
+      <div class="flex-reverse container">
+        
+        <!-- Grupo de textos -->
+        <div class="text-group flex-child">
+          
+          <!-- Primer bloque de texto -->
+          <div class="grid-sm">
+            <h3 class="h3">Introducing an extensible editor</h3> <!-- Subtítulo -->
+            <p>Blogr features an exceedingly intuitive interface which lets you focus on one thing: creating content. The editor supports management of multiple blogs and allows easy manipulation of embeds such as images, videos, and Markdown. Extensibility with plugins and themes provide easy ways to add functionality or change the looks of a blog.</p> <!-- Descripción -->
+          </div>
+          
+          <!-- Segundo bloque de texto -->
+          <div class="grid-sm">
+            <h3 class="h3">Robust content management</h3> <!-- Subtítulo -->
+            <p>Flexible content management enables users to easily move through posts. Increase the usability of your blog by adding customized categories, sections, format, or flow. With this functionality, you're in full control.</p> <!-- Descripción -->
+          </div>
         </div>
-        <div class="grid-sm">
-          <h3 class="h3">Robust content management</h3>
-          <p>Flexible content management enables users to easily move through posts. Increase the usability of your blog by adding customized categories, sections, format, or flow. With this functionality, you're in full control.</p>
+        
+        <!-- Imagen responsive con picture element -->
+        <picture>
+          <!-- Fuente para pantallas de 768px o más (desktop) -->
+          <source media="(min-width: 768px)" srcset="assets/images/illustration-editor-desktop.svg">
+          <!-- Imagen fallback para móvil -->
+          <img src="assets/images/illustration-editor-mobile.svg" class="responsive-img flex-child" alt="Laptop illustration">
+        </picture>
+      </div>
+    </section>
+
+    <!-- ========================================
+         SECCIÓN: STATE OF THE ART INFRASTRUCTURE
+         ======================================== -->
+    
+    <section aria-labelledby="phones">
+      
+      <!-- Contenedor del fondo con gradiente -->
+      <div class="phones-bkg">
+        <img src="assets/images/bg-pattern-circles.svg" class="bkg" alt="" aria-hidden="true"> <!-- Patrón de fondo decorativo -->
+      </div>
+      
+      <!-- Contenedor flex con contenido -->
+      <div class="flex-wrap container">
+        <!-- Imagen de teléfonos -->
+        <img class="flex-child phones" src="assets/images/illustration-phones.svg" alt="Phone illustrations">
+        
+        <!-- Texto de la sección -->
+        <div class="flex-child grid-sm">
+          <h2 id="phones" class="h2">State of the Art Infrastructure</h2> <!-- Título de la sección -->
+          <p>With reliability and speed in mind, worldwide data centers provide the backbone for ultra-fast connectivity. This ensures your site will load instantly, no matter where your readers are, keeping your site competitive.</p> <!-- Descripción -->
         </div>
       </div>
-      <picture>
-        <source media="(min-width: 768px)" srcset="assets/images/illustration-editor-desktop.svg">
-        <img src="assets/images/illustration-editor-mobile.svg" class="responsive-img flex-child" alt="Laptop illustration">
-      </picture>
-    </div>
-  </section>
+    </section>
 
-  <section aria-labelledby="phones">
-    <div class="phones-bkg">
-      <img src="assets/images/bg-pattern-circles.svg" class="bkg" alt="" aria-hidden="true">
-    </div>
-    <div class="flex-wrap container">
-      <img class="flex-child phones" src="assets/images/illustration-phones.svg" alt="Phone illustrations">
-      <div class="flex-child grid-sm">
-        <h2 id="phones" class="h2">State of the Art Infrastructure</h2>
-        <p>With reliability and speed in mind, worldwide data centers provide the backbone for ultra-fast connectivity. This ensures your site will load instantly, no matter where your readers are, keeping your site competitive.</p>
-      </div>
-    </div>
-  </section>
-
-  <section aria-labelledby="features">
-    <h2 id="features" class="sr-only">Additional Features</h2>
-    <div class="flex-reverse container">
-      <picture>
-        <source media="(min-width: 768px)" srcset="assets/images/illustration-laptop-desktop.svg">
-        <img src="assets/images/illustration-laptop-mobile.svg" class="responsive-img flex-child" alt="Laptop illustration">
-      </picture>
-      <div class="text-group flex-child">
-        <div class="grid-sm">
-          <h3 class="h3">Free, open, simple</h3>
-          <p>Blogr is a free and open source application backed by a large community of helpful developers. It supports features such as code syntax highlighting, RSS feeds, social media integration, third-party commenting tools, and works seamlessly with Google Analytics. The architecture is clean and is relatively easy to learn.</p>
+    <!-- ========================================
+         SECCIÓN: ADDITIONAL FEATURES
+         ======================================== -->
+    
+    <section aria-labelledby="features">
+      <!-- Título oculto visualmente pero accesible para lectores de pantalla -->
+      <h2 id="features" class="sr-only">Additional Features</h2>
+      
+      <!-- Contenedor flex con orden inverso -->
+      <div class="flex-reverse container">
+        
+        <!-- Imagen responsive con picture element -->
+        <picture>
+          <!-- Fuente para pantallas de 768px o más (desktop) -->
+          <source media="(min-width: 768px)" srcset="assets/images/illustration-laptop-desktop.svg">
+          <!-- Imagen fallback para móvil -->
+          <img src="assets/images/illustration-laptop-mobile.svg" class="responsive-img flex-child" alt="Laptop illustration">
+        </picture>
+        
+        <!-- Grupo de textos -->
+        <div class="text-group flex-child">
+          
+          <!-- Primer bloque de texto -->
+          <div class="grid-sm">
+            <h3 class="h3">Free, open, simple</h3> <!-- Subtítulo -->
+            <p>Blogr is a free and open source application backed by a large community of helpful developers. It supports features such as code syntax highlighting, RSS feeds, social media integration, third-party commenting tools, and works seamlessly with Google Analytics. The architecture is clean and is relatively easy to learn.</p> <!-- Descripción -->
+          </div>
+          
+          <!-- Segundo bloque de texto -->
+          <div class="grid-sm">
+            <h3 class="h3">Powerful tooling</h3> <!-- Subtítulo -->
+            <p>Batteries included. We built a simple and straightforward CLI tool that makes customization and deployment a breeze, but capable of producing even the most complicated sites.</p> <!-- Descripción -->
+          </div>
         </div>
-        <div class="grid-sm">
-          <h3 class="h3">Powerful tooling</h3>
-          <p>Batteries included. We built a simple and straightforward CLI tool that makes customization and deployment a breeze, but capable of producing even the most complicated sites.</p>
-        </div>
       </div>
-    </div>
-  </section>
-</main>
+    </section>
+  </main>
 
-<footer>
-  <div class="container footer-flex">
-    <div class="footer-logo">
-      <img src="assets/images/logo.svg" alt="Blogr Logo">
+  <!-- ========================================
+       FOOTER - PIE DE PÁGINA
+       ======================================== -->
+  
+  <footer>
+    <!-- Contenedor principal del footer -->
+    <div class="container footer-flex">
+      
+      <!-- Logo del footer -->
+      <div class="footer-logo">
+        <img src="assets/images/logo.svg" alt="Blogr Logo">
+      </div>
+      
+      <!-- Navegación del footer -->
+      <nav aria-label="Footer navigation" class="footer-nav"> <!-- aria-label describe que es navegación del footer -->
+        
+        <!-- Columna 1: Product -->
+        <div class="footer-column">
+          <h4 class="footer-title">Product</h4> <!-- Título de la columna -->
+          <ul class="footer-links"> <!-- Lista de enlaces -->
+            <li><a href="#">Overview</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Marketplace</a></li>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Integrations</a></li>
+          </ul>
+        </div>
+        
+        <!-- Columna 2: Company -->
+        <div class="footer-column">
+          <h4 class="footer-title">Company</h4> <!-- Título de la columna -->
+          <ul class="footer-links"> <!-- Lista de enlaces -->
+            <li><a href="#">About</a></li>
+            <li><a href="#">Team</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+        
+        <!-- Columna 3: Connect -->
+        <div class="footer-column">
+          <h4 class="footer-title">Connect</h4> <!-- Título de la columna -->
+          <ul class="footer-links"> <!-- Lista de enlaces -->
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Newsletter</a></li>
+            <li><a href="#">LinkedIn</a></li>
+          </ul>
+        </div>
+      </nav>
     </div>
-    <nav aria-label="Footer navigation" class="footer-nav">
-      <div class="footer-column">
-        <h4 class="footer-title">Product</h4>
-        <ul class="footer-links">
-          <li><a href="#">Overview</a></li>
-          <li><a href="#">Pricing</a></li>
-          <li><a href="#">Marketplace</a></li>
-          <li><a href="#">Features</a></li>
-          <li><a href="#">Integrations</a></li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h4 class="footer-title">Company</h4>
-        <ul class="footer-links">
-          <li><a href="#">About</a></li>
-          <li><a href="#">Team</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Careers</a></li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h4 class="footer-title">Connect</h4>
-        <ul class="footer-links">
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Newsletter</a></li>
-          <li><a href="#">LinkedIn</a></li>
-        </ul>
-      </div>
-    </nav>
-  </div>
-</footer>
+  </footer>
 </body>
 </html>
