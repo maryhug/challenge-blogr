@@ -1,582 +1,719 @@
-/* Reset */
+/* ========================================
+   RESET UNIVERSAL
+   ======================================== */
+
+/* Reset para todos los elementos, pseudo-elementos before y after */
 *, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  box-sizing: border-box; /* Incluye padding y border en el ancho/alto total */
+  margin: 0; /* Elimina márgenes externos */
+  padding: 0; /* Elimina relleno interno */
 }
 
+/* Estilos para imágenes y SVG */
 img, svg {
-  max-width: 100%;
-  display: block;
+  max-width: 100%; /* Ancho máximo del 100% (evita desbordamiento) */
+  display: block; /* Display en bloque (elimina espacio inferior) */
 }
 
-/* Variables CSS */
+/* ========================================
+   VARIABLES CSS - SISTEMA DE DISEÑO
+   ======================================== */
+
+/* Variables globales reutilizables */
 :root {
-  /* Colores */
-  --color-primary: hsl(356, 100%, 66%);
-  --color-primary-hover: hsl(355, 100%, 74%);
-  --color-white: hsl(0, 0%, 100%);
-  --color-text-footer: hsl(240, 2%, 79%);
-  --color-text-body: hsl(207, 13%, 34%);
-  --color-text-headings: hsl(208, 49%, 24%);
-  --color-footer-bg: hsl(240, 10%, 16%);
+  /* === Colores === */
+  --color-primary: hsl(356, 100%, 66%); /* Color primario - Rojo */
+  --color-primary-hover: hsl(355, 100%, 74%); /* Color primario hover - Rojo claro */
+  --color-white: hsl(0, 0%, 100%); /* Blanco puro */
+  --color-text-footer: hsl(240, 2%, 79%); /* Texto del footer - Gris claro */
+  --color-text-body: hsl(207, 13%, 34%); /* Texto del cuerpo - Gris azulado */
+  --color-text-headings: hsl(208, 49%, 24%); /* Texto de encabezados - Azul oscuro */
+  --color-footer-bg: hsl(240, 10%, 16%); /* Fondo del footer - Gris muy oscuro */
 
-  /* Gradientes */
-  --gradient-hero: linear-gradient(180deg, hsl(13, 100%, 72%) 0%, hsl(356, 100%, 66%) 100%);
-  --gradient-dark: linear-gradient(180deg, hsl(237, 17%, 21%) 0%, hsl(237, 23%, 32%) 100%);
+  /* === Gradientes === */
+  --gradient-hero: linear-gradient(180deg, hsl(13, 100%, 72%) 0%, hsl(356, 100%, 66%) 100%); /* Gradiente hero - Naranja a rojo */
+  --gradient-dark: linear-gradient(180deg, hsl(237, 17%, 21%) 0%, hsl(237, 23%, 32%) 100%); /* Gradiente oscuro - Azul oscuro a gris azulado */
 
-  /* Tipografía */
-  --font-size-header-lg: clamp(30px, 13.8461525px + 4.615385vw, 60px);
-  --font-size-header-md: clamp(25px, 14.2307695px + 3.076923vw, 45px);
-  --font-size-header-sm: clamp(20px, 15.6923085px + 1.230769vw, 28px);
+  /* === Tipografía === */
+  /* clamp(mínimo, valor_preferido, máximo) - Tamaños de fuente fluidos y responsivos */
+  --font-size-header-lg: clamp(30px, 13.8461525px + 4.615385vw, 60px); /* Encabezado grande: 30px a 60px */
+  --font-size-header-md: clamp(25px, 14.2307695px + 3.076923vw, 45px); /* Encabezado mediano: 25px a 45px */
+  --font-size-header-sm: clamp(20px, 15.6923085px + 1.230769vw, 28px); /* Encabezado pequeño: 20px a 28px */
 
-  /* Espaciados */
-  --space-xs-s: clamp(1rem, 0.8rem + 0.98vw, 1.5rem);
-  --space-s-m: clamp(1.31rem, 0.95rem + 1.83vw, 2.25rem);
-  --space-m-l: clamp(2rem, 1.61rem + 1.95vw, 3rem);
-  --space-l-xl: clamp(2.63rem, 1.89rem + 3.66vw, 4.5rem);
-  --space-xl-2xl: clamp(3.94rem, 3.13rem + 4.02vw, 6rem);
-  --space-2xl-3xl: clamp(5.25rem, 3.79rem + 7.32vw, 9rem);
-  --space-3xl-4xl: clamp(7.88rem, 7.44rem + 2.2vw, 9rem);
+  /* === Espaciados === */
+  /* Sistema de espaciado fluido usando clamp para responsividad */
+  --space-xs-s: clamp(1rem, 0.8rem + 0.98vw, 1.5rem); /* Extra pequeño a pequeño */
+  --space-s-m: clamp(1.31rem, 0.95rem + 1.83vw, 2.25rem); /* Pequeño a mediano */
+  --space-m-l: clamp(2rem, 1.61rem + 1.95vw, 3rem); /* Mediano a grande */
+  --space-l-xl: clamp(2.63rem, 1.89rem + 3.66vw, 4.5rem); /* Grande a extra grande */
+  --space-xl-2xl: clamp(3.94rem, 3.13rem + 4.02vw, 6rem); /* Extra grande a doble extra grande */
+  --space-2xl-3xl: clamp(5.25rem, 3.79rem + 7.32vw, 9rem); /* Doble extra grande a triple extra grande */
+  --space-3xl-4xl: clamp(7.88rem, 7.44rem + 2.2vw, 9rem); /* Triple a cuádruple extra grande */
 
-  /* Radios */
-  --radius-pill: 2rem;
-  --radius-section: 6rem;
+  /* === Radios (esquinas redondeadas) === */
+  --radius-pill: 2rem; /* Radio de píldora - 2rem */
+  --radius-section: 6rem; /* Radio de sección - 6rem */
 
-  /* Focus */
-  --focus-outline-color: hsl(34, 100%, 80%);
+  /* === Focus (accesibilidad) === */
+  --focus-outline-color: hsl(34, 100%, 80%); /* Color del outline al enfocar - Naranja claro */
 }
 
-/* Base */
+/* ========================================
+   ESTILOS BASE
+   ======================================== */
+
+/* Estilos del body */
 body {
-  font-size: 1rem;
-  font-family: "Overpass", sans-serif;
-  letter-spacing: 0.02em;
-  line-height: 1.5;
-  color: var(--color-text-body);
+  font-size: 1rem; /* Tamaño de fuente base de 1rem (16px) */
+  font-family: "Overpass", sans-serif; /* Fuente principal Overpass con fallback */
+  letter-spacing: 0.02em; /* Espaciado entre letras de 0.02em */
+  line-height: 1.5; /* Altura de línea de 1.5 */
+  color: var(--color-text-body); /* Color de texto del cuerpo usando variable */
 }
 
+/* Estilos para enlaces y botones */
 a, button {
-  outline: none;
-  text-decoration: none;
+  outline: none; /* Elimina outline predeterminado */
+  text-decoration: none; /* Elimina subrayado de enlaces */
 }
 
+/* Estados de focus visible para accesibilidad */
 a:focus-visible, button:focus-visible {
-  outline: 3px solid var(--focus-outline-color);
-  outline-offset: 3px;
-  border-radius: 4px;
+  outline: 3px solid var(--focus-outline-color); /* Outline sólido de 3px naranja claro */
+  outline-offset: 3px; /* Espacio de 3px entre el elemento y el outline */
+  border-radius: 4px; /* Esquinas redondeadas de 4px */
 }
 
+/* Contenedor principal */
 main {
-  display: grid;
-  gap: var(--space-xl-2xl);
-  padding: var(--space-xl-2xl) var(--space-xs-s);
-  overflow: hidden;
+  display: grid; /* Activa grid layout */
+  gap: var(--space-xl-2xl); /* Espacio entre elementos usando variable */
+  padding: var(--space-xl-2xl) var(--space-xs-s); /* Relleno: variable arriba/abajo y laterales */
+  overflow: hidden; /* Oculta contenido desbordado */
 }
 
-/* Tipografía */
+/* ========================================
+   TIPOGRAFÍA - CLASES DE ENCABEZADOS
+   ======================================== */
+
+/* Encabezado h1 */
 .h1 {
-  font-size: var(--font-size-header-lg);
-  line-height: 1.2;
+  font-size: var(--font-size-header-lg); /* Tamaño grande usando variable */
+  line-height: 1.2; /* Altura de línea compacta */
 }
 
+/* Encabezado h2 */
 .h2 {
-  font-size: var(--font-size-header-md);
-  color: var(--color-text-headings);
-  line-height: 1.2;
+  font-size: var(--font-size-header-md); /* Tamaño mediano usando variable */
+  color: var(--color-text-headings); /* Color azul oscuro */
+  line-height: 1.2; /* Altura de línea compacta */
 }
 
+/* Encabezado h3 */
 .h3 {
-  font-size: var(--font-size-header-sm);
-  color: var(--color-text-headings);
-  line-height: 1.2;
-  max-inline-size: 18ch;
+  font-size: var(--font-size-header-sm); /* Tamaño pequeño usando variable */
+  color: var(--color-text-headings); /* Color azul oscuro */
+  line-height: 1.2; /* Altura de línea compacta */
+  max-inline-size: 18ch; /* Ancho máximo de 18 caracteres (mejora legibilidad) */
 }
 
+/* Clase para contenido solo para lectores de pantalla (accesibilidad) */
 .sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
+  position: absolute; /* Posicionamiento absoluto */
+  width: 1px; /* Ancho de 1px */
+  height: 1px; /* Alto de 1px */
+  padding: 0; /* Sin padding */
+  margin: -1px; /* Margen negativo */
+  overflow: hidden; /* Oculta overflow */
+  clip: rect(0, 0, 0, 0); /* Recorta elemento (invisible) */
+  white-space: nowrap; /* No permite saltos de línea */
+  border-width: 0; /* Sin borde */
 }
 
-/* Layout */
+/* ========================================
+   LAYOUT - SISTEMAS DE DISEÑO
+   ======================================== */
+
+/* Grid pequeño centrado */
 .grid-sm {
-  display: grid;
-  place-items: center;
-  gap: var(--space-s-m);
-  text-align: center;
+  display: grid; /* Activa grid layout */
+  place-items: center; /* Centra elementos horizontal y verticalmente */
+  gap: var(--space-s-m); /* Espacio usando variable */
+  text-align: center; /* Centra el texto */
 }
 
+/* Contenedores flex con wrap */
 .flex-reverse, .flex-wrap {
-  display: flex;
-  gap: var(--space-l-xl);
-  flex-wrap: wrap;
+  display: flex; /* Activa flexbox */
+  gap: var(--space-l-xl); /* Espacio usando variable */
+  flex-wrap: wrap; /* Permite que elementos salten a nueva línea */
 }
 
+/* Flex con orden inverso */
 .flex-reverse {
-  flex-wrap: wrap-reverse;
+  flex-wrap: wrap-reverse; /* Envuelve elementos en orden inverso */
 }
 
+/* Hijo de flex */
 .flex-child {
-  align-content: center;
+  align-content: center; /* Centra contenido verticalmente */
 }
 
+/* Contenedor principal con ancho máximo */
 .container {
-  max-width: 1500px;
-  margin-inline: auto;
-  padding-inline: var(--space-xs-s);
+  max-width: 1500px; /* Ancho máximo de 1500px */
+  margin-inline: auto; /* Centra horizontalmente (márgenes laterales automáticos) */
+  padding-inline: var(--space-xs-s); /* Relleno lateral usando variable */
 }
 
-/* Botones */
+/* ========================================
+   BOTONES
+   ======================================== */
+
+/* Grupo de botones */
 .btn-group {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-s-m);
-  flex-wrap: wrap;
+  display: flex; /* Activa flexbox */
+  align-items: center; /* Centra verticalmente */
+  justify-content: center; /* Centra horizontalmente */
+  gap: var(--space-s-m); /* Espacio entre botones usando variable */
+  flex-wrap: wrap; /* Permite saltar a nueva línea */
 }
 
+/* Botón base */
 .btn {
-  font-family: "Ubuntu", sans-serif;
-  font-weight: bold;
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  border-radius: var(--radius-pill);
-  padding: 0.7rem 1.5rem;
-  border: 1px solid var(--color-white);
-  transition: color 200ms ease-in-out, background-color 200ms ease-in-out, transform 150ms ease-in-out;
-  cursor: pointer;
-  display: inline-block;
+  font-family: "Ubuntu", sans-serif; /* Fuente Ubuntu */
+  font-weight: bold; /* Grosor bold (negrita) */
+  background-color: var(--color-primary); /* Fondo rojo */
+  color: var(--color-white); /* Texto blanco */
+  border-radius: var(--radius-pill); /* Esquinas redondeadas estilo píldora */
+  padding: 0.7rem 1.5rem; /* Relleno: 0.7rem arriba/abajo, 1.5rem laterales */
+  border: 1px solid var(--color-white); /* Borde blanco de 1px */
+  transition: color 200ms ease-in-out, background-color 200ms ease-in-out, transform 150ms ease-in-out; /* Transiciones suaves de color, fondo y transformación */
+  cursor: pointer; /* Cursor de mano */
+  display: inline-block; /* Display inline-block */
 }
 
+/* Botón relleno (filled) */
 .btn--filled {
-  background-color: var(--color-white);
-  color: var(--color-primary);
+  background-color: var(--color-white); /* Fondo blanco */
+  color: var(--color-primary); /* Texto rojo */
 }
 
+/* Botón filled al pasar el mouse o enfocar */
 .btn--filled:is(:hover, :focus-visible) {
-  background-color: var(--color-primary-hover);
-  color: var(--color-white);
-  border-color: transparent;
+  background-color: var(--color-primary-hover); /* Fondo rojo claro */
+  color: var(--color-white); /* Texto blanco */
+  border-color: transparent; /* Borde transparente */
 }
 
+/* Botón outline (solo borde) */
 .btn--outline {
-  background-color: transparent;
+  background-color: transparent; /* Fondo transparente */
 }
 
+/* Botón outline al pasar el mouse o enfocar */
 .btn--outline:is(:hover, :focus-visible) {
-  background-color: var(--color-white);
-  color: var(--color-primary);
+  background-color: var(--color-white); /* Fondo blanco */
+  color: var(--color-primary); /* Texto rojo */
 }
 
+/* Botón al hacer clic (estado activo) */
 .btn:active {
-  transform: scale(0.98);
+  transform: scale(0.98); /* Escala 0.98x (efecto de clic) */
 }
 
-/* Navegación */
+/* ========================================
+   NAVEGACIÓN
+   ======================================== */
+
+/* Contenedor de navegación */
 .nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--space-l-xl);
-  position: absolute;
-  z-index: 10;
-  padding-block: var(--space-m-l);
-  inset-inline: var(--space-s-m);
+  display: flex; /* Activa flexbox */
+  justify-content: space-between; /* Distribuye con espacio entre elementos */
+  align-items: center; /* Centra verticalmente */
+  gap: var(--space-l-xl); /* Espacio usando variable */
+  position: absolute; /* Posicionamiento absoluto */
+  z-index: 10; /* Por encima de otros elementos */
+  padding-block: var(--space-m-l); /* Relleno vertical usando variable */
+  inset-inline: var(--space-s-m); /* Posicionamiento lateral usando variable */
 }
 
+/* Enlace al homepage (logo) */
 [aria-label="Go to homepage"] {
-  display: grid;
-  place-items: center;
+  display: grid; /* Activa grid layout */
+  place-items: center; /* Centra contenido */
 }
 
+/* Enlaces principales de navegación (móvil) */
 .nav-links--main {
-  display: none;
-  position: absolute;
-  top: 7rem;
-  background-color: var(--color-white);
-  list-style: none;
-  border-radius: 8px;
-  padding: 1.5rem;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-  width: calc(100% - 2rem);
-  left: 1rem;
+  display: none; /* Oculto por defecto en móvil */
+  position: absolute; /* Posicionamiento absoluto */
+  top: 7rem; /* 7rem desde arriba */
+  background-color: var(--color-white); /* Fondo blanco */
+  list-style: none; /* Sin viñetas */
+  border-radius: 8px; /* Esquinas redondeadas de 8px */
+  padding: 1.5rem; /* Relleno de 1.5rem */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15); /* Sombra: horizontal, vertical, difuminado, color */
+  width: calc(100% - 2rem); /* Ancho calculado (100% - 2rem) */
+  left: 1rem; /* 1rem desde la izquierda */
 }
 
+/* Elementos sin rol semántico */
 [role="none"] {
-  display: grid;
-  place-items: center;
+  display: grid; /* Activa grid layout */
+  place-items: center; /* Centra contenido */
 }
 
+/* Enlace individual de navegación */
 .nav-link--main {
-  color: var(--color-white);
-  transition: font-weight 200ms ease;
+  color: var(--color-white); /* Texto blanco */
+  transition: font-weight 200ms ease; /* Transición suave del grosor de fuente */
 }
 
+/* Checkbox oculto para toggle del menú */
 .menu-toggle {
-  display: none;
+  display: none; /* Oculto (funciona con el label) */
 }
 
+/* Botón del menú hamburguesa */
 .btn--menu {
-  background: url("assets/images/icon-hamburger.svg") no-repeat center / contain;
-  border: 0;
-  cursor: pointer;
-  height: 32px;
-  width: 32px;
-  transition: transform 200ms ease;
+  background: url("assets/images/icon-hamburger.svg") no-repeat center / contain; /* Imagen de fondo: hamburguesa */
+  border: 0; /* Sin borde */
+  cursor: pointer; /* Cursor de mano */
+  height: 32px; /* Alto de 32px */
+  width: 32px; /* Ancho de 32px */
+  transition: transform 200ms ease; /* Transición suave de transformación */
 }
 
+/* Botón del menú al pasar el mouse */
 .btn--menu:hover {
-  transform: scale(1.1);
+  transform: scale(1.1); /* Escala 1.1x (10% más grande) */
 }
 
+/* Cambia ícono cuando el menú está abierto */
 .menu-toggle:checked + .btn--menu {
-  background-image: url("assets/images/icon-close.svg");
+  background-image: url("assets/images/icon-close.svg"); /* Cambia a ícono de cerrar */
 }
 
+/* Muestra menú cuando checkbox está marcado */
 .menu-toggle:checked ~ .nav-links--main {
-  display: block;
+  display: block; /* Muestra el menú */
 }
 
-/* Responsive - Tablet */
+/* ========================================
+   RESPONSIVE - TABLET (768px o más)
+   ======================================== */
+
 @media (min-width: 768px) {
+  /* Ajusta grid pequeño para tablet */
   .grid-sm {
-    text-align: left;
-    justify-items: start;
+    text-align: left; /* Alinea texto a la izquierda */
+    justify-items: start; /* Alinea items al inicio */
   }
 
+  /* Excepción para grid en header */
   header .grid-sm {
-    text-align: center;
-    justify-items: center;
+    text-align: center; /* Centra texto */
+    justify-items: center; /* Centra items */
   }
 
+  /* Cambia flex a grid para tablet */
   .flex-reverse, .flex-wrap {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    align-items: center;
+    display: grid; /* Activa grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Columnas automáticas con mínimo 280px */
+    align-items: center; /* Centra verticalmente */
   }
 
+  /* Ajusta flex child */
   .flex-child {
-    flex: 1 1 30%;
+    flex: 1 1 30%; /* Crece, se encoge, base del 30% */
   }
 
+  /* Oculta botón de menú en tablet/desktop */
   .btn--menu {
-    display: none;
+    display: none; /* Oculta completamente */
   }
 
+  /* Navegación horizontal en tablet/desktop */
   .nav-links--main {
-    display: flex !important;
-    position: static;
-    background-color: transparent;
-    justify-content: space-between;
-    gap: var(--space-s-m);
-    width: 100%;
-    padding: 0;
-    box-shadow: none;
+    display: flex !important; /* Muestra como flex (importante para sobrescribir) */
+    position: static; /* Posición normal (no absoluta) */
+    background-color: transparent; /* Fondo transparente */
+    justify-content: space-between; /* Distribuye con espacio entre elementos */
+    gap: var(--space-s-m); /* Espacio usando variable */
+    width: 100%; /* Ancho completo */
+    padding: 0; /* Sin padding */
+    box-shadow: none; /* Sin sombra */
   }
 
+  /* Enlace de navegación al pasar el mouse */
   .nav-link--main:hover {
-    font-weight: bold;
+    font-weight: bold; /* Grosor bold */
   }
 
+  /* Flecha después del enlace de navegación */
   .nav-link--main::after {
-    content: url("assets/images/icon-arrow-light.svg");
-    margin-left: 0.4rem;
-    transition: transform 200ms ease;
-    display: inline-block;
+    content: url("assets/images/icon-arrow-light.svg"); /* Contenido generado: flecha */
+    margin-left: 0.4rem; /* Margen izquierdo de 0.4rem */
+    transition: transform 200ms ease; /* Transición suave de transformación */
+    display: inline-block; /* Display inline-block (permite transformaciones) */
   }
 
+  /* Rota flecha al pasar mouse sobre el item de navegación */
   .nav-links--main > li:hover .nav-link--main::after {
-    transform: rotate(180deg);
+    transform: rotate(180deg); /* Rota 180 grados */
   }
 
+  /* Posiciona items de navegación como relativos */
   .nav-links--main > li {
-    position: relative;
+    position: relative; /* Contexto de posicionamiento para submenú absoluto */
   }
 
+  /* Muestra submenú al pasar mouse o enfocar */
   .nav-links--main > li:hover .nav-sublinks,
   .nav-links--main > li:focus-within .nav-sublinks {
-    display: block;
+    display: block; /* Muestra el submenú */
   }
 
+  /* Clase helper para margen derecho automático */
   .right-me {
-    margin-right: auto;
+    margin-right: auto; /* Margen derecho automático */
   }
 
+  /* Subenlaces de navegación (dropdown) */
   .nav-sublinks {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    margin-top: 0.5rem;
-    background-color: var(--color-white);
-    border-radius: 8px;
-    padding: 1.5rem;
-    min-width: 180px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-    list-style: none;
-    z-index: 100;
+    display: none; /* Oculto por defecto */
+    position: absolute; /* Posicionamiento absoluto */
+    top: 100%; /* Debajo del elemento padre */
+    left: 0; /* Alineado a la izquierda */
+    margin-top: 0.5rem; /* Margen superior de 0.5rem */
+    background-color: var(--color-white); /* Fondo blanco */
+    border-radius: 8px; /* Esquinas redondeadas de 8px */
+    padding: 1.5rem; /* Relleno de 1.5rem */
+    min-width: 180px; /* Ancho mínimo de 180px */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15); /* Sombra suave */
+    list-style: none; /* Sin viñetas */
+    z-index: 100; /* Por encima de otros elementos */
   }
 
+  /* Items de subenlaces */
   .nav-sublinks li {
-    padding: 0.5rem 0;
-    color: var(--color-text-body);
-    cursor: pointer;
-    transition: color 200ms ease, font-weight 200ms ease;
+    padding: 0.5rem 0; /* Relleno: 0.5rem arriba/abajo, 0 laterales */
+    color: var(--color-text-body); /* Color gris azulado */
+    cursor: pointer; /* Cursor de mano */
+    transition: color 200ms ease, font-weight 200ms ease; /* Transición suave de color y grosor */
   }
 
+  /* Items de subenlaces al pasar el mouse */
   .nav-sublinks li:hover {
-    color: var(--color-text-headings);
-    font-weight: 600;
+    color: var(--color-text-headings); /* Color azul oscuro */
+    font-weight: 600; /* Grosor semibold */
   }
 }
 
-/* Responsive - Desktop */
+/* ========================================
+   RESPONSIVE - DESKTOP (1024px o más)
+   ======================================== */
+
 @media (min-width: 1024px) {
+  /* Ajusta ancho máximo del contenedor para desktop */
   .container {
-    max-width: 1440px;
+    max-width: 1440px; /* Ancho máximo de 1440px */
   }
 
+  /* Grid de 2 columnas fijas en desktop */
   .flex-reverse, .flex-wrap {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas iguales */
   }
 }
 
-/* Responsive - Mobile pequeño */
+/* ========================================
+   RESPONSIVE - MÓVIL PEQUEÑO (480px o menos)
+   ======================================== */
+
 @media (max-width: 480px) {
+  /* Grupo de botones en fila completa */
   .btn-group {
-    flex-direction: row;
-    width: 100%;
-    gap: 1rem;
+    flex-direction: row; /* Dirección en fila */
+    width: 100%; /* Ancho completo */
+    gap: 1rem; /* Espacio de 1rem */
   }
 
+  /* Reduce padding de botones en móvil pequeño */
   .btn {
-    padding: 0.6rem 1.2rem;
+    padding: 0.6rem 1.2rem; /* Relleno: 0.6rem arriba/abajo, 1.2rem laterales */
   }
 
+  /* Reduce padding del header */
   header {
-    padding-inline: 1rem;
+    padding-inline: 1rem; /* Relleno lateral de 1rem */
   }
 
+  /* Ajusta ancho del menú de navegación */
   .nav-links--main {
-    width: calc(100% - 1rem);
-    left: 0.5rem;
+    width: calc(100% - 1rem); /* Ancho calculado */
+    left: 0.5rem; /* 0.5rem desde la izquierda */
   }
 }
 
-/* Header */
+/* ========================================
+   HEADER - CABECERA
+   ======================================== */
+
+/* Sección header */
 header {
-  display: grid;
-  place-items: center;
-  gap: var(--space-l-xl);
-  background: var(--gradient-hero);
-  color: var(--color-white);
-  padding: 12rem 2rem var(--space-3xl-4xl);
-  text-align: center;
-  position: relative;
-  border-bottom-left-radius: var(--radius-section);
-  z-index: 1;
-  overflow: hidden;
+  display: grid; /* Activa grid layout */
+  place-items: center; /* Centra elementos horizontal y verticalmente */
+  gap: var(--space-l-xl); /* Espacio usando variable */
+  background: var(--gradient-hero); /* Gradiente de fondo */
+  color: var(--color-white); /* Texto blanco */
+  padding: 12rem 2rem var(--space-3xl-4xl); /* Relleno: 12rem arriba, 2rem laterales, variable abajo */
+  text-align: center; /* Centra el texto */
+  position: relative; /* Contexto de posicionamiento */
+  border-bottom-left-radius: var(--radius-section); /* Esquina inferior izquierda redondeada */
+  z-index: 1; /* Índice de apilamiento */
+  overflow: hidden; /* Oculta contenido desbordado */
 }
 
+/* Imagen de fondo del header */
 header .bkg {
-  position: absolute;
-  z-index: -1;
-  transform: scale(4);
-  top: -4rem;
-  right: -4rem;
+  position: absolute; /* Posicionamiento absoluto */
+  z-index: -1; /* Detrás del contenido */
+  transform: scale(4); /* Escala 4x (400%) */
+  top: -4rem; /* -4rem desde arriba (fuera del contenedor) */
+  right: -4rem; /* -4rem desde la derecha */
 }
 
-/* Secciones */
+/* ========================================
+   SECCIONES
+   ======================================== */
+
+/* Sección "Future Designed" */
 [aria-labelledby="future-designed"] {
-  display: grid;
-  place-items: center;
-  gap: var(--space-xl-2xl);
-  text-align: center;
+  display: grid; /* Activa grid layout */
+  place-items: center; /* Centra elementos */
+  gap: var(--space-xl-2xl); /* Espacio usando variable */
+  text-align: center; /* Centra el texto */
 }
 
+/* Grupo de texto */
 .text-group {
-  display: grid;
-  gap: var(--space-l-xl);
+  display: grid; /* Activa grid layout */
+  gap: var(--space-l-xl); /* Espacio usando variable */
 }
 
+/* Imagen responsiva */
 .responsive-img {
-  margin-inline: auto;
-  transition: transform 300ms ease;
+  margin-inline: auto; /* Centra horizontalmente */
+  transition: transform 300ms ease; /* Transición suave de transformación */
 }
 
+/* Imagen responsiva en tablet/desktop */
 @media (min-width: 768px) {
   .responsive-img {
-    transform: translateX(15%);
+    transform: translateX(15%); /* Desplaza 15% hacia la derecha */
   }
 }
+
+/* ========================================
+   SECCIÓN PHONES - TELÉFONOS
+   ======================================== */
 
 /* Sección Phones */
 [aria-labelledby="phones"] {
-  display: grid;
-  gap: var(--space-xl-2xl);
-  text-align: center;
-  color: var(--color-white);
-  padding-bottom: var(--space-2xl-3xl);
-  border-bottom-left-radius: var(--radius-section);
-  border-top-right-radius: var(--radius-section);
-  position: relative;
+  display: grid; /* Activa grid layout */
+  gap: var(--space-xl-2xl); /* Espacio usando variable */
+  text-align: center; /* Centra el texto */
+  color: var(--color-white); /* Texto blanco */
+  padding-bottom: var(--space-2xl-3xl); /* Relleno inferior usando variable */
+  border-bottom-left-radius: var(--radius-section); /* Esquina inferior izquierda redondeada */
+  border-top-right-radius: var(--radius-section); /* Esquina superior derecha redondeada */
+  position: relative; /* Contexto de posicionamiento */
 }
 
+/* Imagen de teléfonos */
 [aria-labelledby="phones"] .phones {
-  margin-inline: auto;
+  margin-inline: auto; /* Centra horizontalmente */
 }
 
+/* Título h2 en sección phones */
 [aria-labelledby="phones"] .h2 {
-  color: var(--color-white);
+  color: var(--color-white); /* Texto blanco */
 }
 
+/* Ajusta gap del flex-wrap en sección phones */
 [aria-labelledby="phones"] .flex-wrap {
-  gap: var(--space-s-m);
+  gap: var(--space-s-m); /* Espacio usando variable */
 }
 
+/* Fondo de la sección phones */
 .phones-bkg {
-  background: var(--gradient-dark);
-  position: absolute;
-  inset: var(--space-3xl-4xl) calc(var(--space-xs-s) * -1) 0;
-  z-index: -2;
-  border-bottom-left-radius: var(--radius-section);
-  border-top-right-radius: var(--radius-section);
-  overflow: hidden;
+  background: var(--gradient-dark); /* Gradiente oscuro */
+  position: absolute; /* Posicionamiento absoluto */
+  inset: var(--space-3xl-4xl) calc(var(--space-xs-s) * -1) 0; /* Posicionamiento: arriba, laterales negativos (extiende), abajo */
+  z-index: -2; /* Detrás del contenido */
+  border-bottom-left-radius: var(--radius-section); /* Esquina inferior izquierda redondeada */
+  border-top-right-radius: var(--radius-section); /* Esquina superior derecha redondeada */
+  overflow: hidden; /* Oculta contenido desbordado */
 }
 
+/* Imagen de fondo de phones */
 .phones-bkg .bkg {
-  position: absolute;
-  z-index: -1;
-  right: 0;
-  left: 0;
-  top: -20%;
+  position: absolute; /* Posicionamiento absoluto */
+  z-index: -1; /* Detrás del fondo */
+  right: 0; /* Posicionado a la derecha */
+  left: 0; /* Posicionado a la izquierda */
+  top: -20%; /* -20% desde arriba */
 }
 
+/* Ajustes para tablet/desktop */
 @media (min-width: 768px) {
+  /* Elimina padding inferior en tablet/desktop */
   [aria-labelledby="phones"] {
-    padding-bottom: 0;
+    padding-bottom: 0; /* Sin padding inferior */
   }
 
+  /* Ajusta posicionamiento del fondo */
   .phones-bkg {
-    inset: var(--space-xl-2xl) calc(var(--space-xs-s) * -1) var(--space-2xl-3xl);
+    inset: var(--space-xl-2xl) calc(var(--space-xs-s) * -1) var(--space-2xl-3xl); /* Posicionamiento: arriba, laterales, abajo */
   }
 
+  /* Ajusta imagen de fondo */
   .phones-bkg .bkg {
-    top: -100%;
-    transform: scale(1.5);
-    left: -5%;
+    top: -100%; /* -100% desde arriba */
+    transform: scale(1.5); /* Escala 1.5x (150%) */
+    left: -5%; /* -5% desde la izquierda */
   }
 }
-/* Footer */
+
+/* ========================================
+   FOOTER - PIE DE PÁGINA
+   ======================================== */
+
+/* Contenedor del footer */
 footer {
-  background-color: var(--color-footer-bg);
-  border-top-right-radius: var(--radius-section);
-  padding: var(--space-l-xl) var(--space-xs-s);
-  color: var(--color-white);
+  background-color: var(--color-footer-bg); /* Fondo gris muy oscuro */
+  border-top-right-radius: var(--radius-section); /* Esquina superior derecha redondeada */
+  padding: var(--space-l-xl) var(--space-xs-s); /* Relleno usando variables */
+  color: var(--color-white); /* Texto blanco */
 }
 
+/* Contenedor flex del footer */
 .footer-flex {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: var(--space-l-xl);
+  display: flex; /* Activa flexbox */
+  flex-direction: column; /* Dirección vertical */
+  align-items: center; /* Centra horizontalmente */
+  text-align: center; /* Centra el texto */
+  gap: var(--space-l-xl); /* Espacio usando variable */
 }
 
+/* Logo del footer */
 .footer-logo {
-  width: 100%;
-  display: flex;
-  justify-content: center;
+  width: 100%; /* Ancho completo */
+  display: flex; /* Activa flexbox */
+  justify-content: center; /* Centra horizontalmente */
 }
 
+/* Navegación del footer */
 .footer-nav {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-m-l);
-  width: 100%;
+  display: flex; /* Activa flexbox */
+  flex-direction: column; /* Dirección vertical */
+  gap: var(--space-m-l); /* Espacio usando variable */
+  width: 100%; /* Ancho completo */
 }
 
+/* Columna del footer */
 .footer-column {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  display: flex; /* Activa flexbox */
+  flex-direction: column; /* Dirección vertical */
+  gap: 1rem; /* Espacio de 1rem */
 }
 
+/* Título de columna del footer */
 .footer-title {
-  font-family: "Ubuntu", sans-serif;
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--color-white);
-  margin-bottom: 0.5rem;
+  font-family: "Ubuntu", sans-serif; /* Fuente Ubuntu */
+  font-size: 1rem; /* Tamaño de fuente de 1rem */
+  font-weight: 500; /* Grosor medium */
+  color: var(--color-white); /* Texto blanco */
+  margin-bottom: 0.5rem; /* Margen inferior de 0.5rem */
 }
 
+/* Lista de enlaces del footer */
 .footer-links {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  list-style: none; /* Sin viñetas */
+  display: flex; /* Activa flexbox */
+  flex-direction: column; /* Dirección vertical */
+  gap: 0.5rem; /* Espacio de 0.5rem */
 }
 
+/* Enlaces del footer */
 .footer-links a {
-  color: var(--color-text-footer);
-  font-size: 0.95rem;
-  transition: color 200ms ease, text-decoration 200ms ease;
+  color: var(--color-text-footer); /* Color gris claro */
+  font-size: 0.95rem; /* Tamaño de fuente de 0.95rem */
+  transition: color 200ms ease, text-decoration 200ms ease; /* Transición suave de color y decoración */
 }
 
+/* Enlaces del footer al pasar el mouse */
 .footer-links a:hover {
-  color: var(--color-white);
-  text-decoration: underline;
+  color: var(--color-white); /* Texto blanco */
+  text-decoration: underline; /* Subrayado */
 }
 
-/* Footer responsive */
+/* ========================================
+   FOOTER RESPONSIVE
+   ======================================== */
+
+/* Footer en tablet (768px o más) */
 @media (min-width: 768px) {
+  /* Cambia footer a fila */
   .footer-flex {
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
-    text-align: center;
-    gap: var(--space-3xl-4xl);
+    flex-direction: row; /* Dirección horizontal */
+    align-items: flex-start; /* Alinea al inicio verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    text-align: center; /* Centra el texto */
+    gap: var(--space-3xl-4xl); /* Espacio usando variable */
   }
 
+  /* Ajusta logo del footer */
   .footer-logo {
-    width: auto;
-    flex: 0 0 auto;
-    margin-right: var(--space-m-l);
+    width: auto; /* Ancho automático */
+    flex: 0 0 auto; /* No crece, no se encoge, tamaño automático */
+    margin-right: var(--space-m-l); /* Margen derecho usando variable */
   }
 
+  /* Navegación del footer en fila */
   .footer-nav {
-    flex-direction: row;
-    justify-content: space-around;
-    gap: var(--space-m-l);
-    flex: 1;
+    flex-direction: row; /* Dirección horizontal */
+    justify-content: space-around; /* Distribuye con espacio alrededor */
+    gap: var(--space-m-l); /* Espacio usando variable */
+    flex: 1; /* Ocupa espacio disponible */
   }
 
+  /* Alinea columnas al inicio */
   .footer-column {
-    align-items: flex-start;
+    align-items: flex-start; /* Alinea al inicio */
   }
 }
 
+/* Footer en desktop (1024px o más) */
 @media (min-width: 1024px) {
+  /* Aumenta padding del footer */
   footer {
-    padding: var(--space-xl-2xl) var(--space-xs-s);
+    padding: var(--space-xl-2xl) var(--space-xs-s); /* Relleno usando variables */
   }
 
+  /* Ajusta gap del footer flex */
   .footer-flex {
-    gap: 3rem; /* REDUCIDO: era auto con clamp */
+    gap: 3rem; /* Espacio de 3rem (reducido para desktop) */
   }
 
+  /* Ajusta margen del logo */
   .footer-logo {
-    margin-right: 4rem; /* AJUSTADO para desktop */
+    margin-right: 4rem; /* Margen derecho de 4rem */
   }
 
+  /* Gap responsivo para navegación del footer */
   .footer-nav {
-    gap: clamp(2rem, 4vw, 5rem); /* REDUCIDO el máximo de 8rem a 5rem */
+    gap: clamp(2rem, 4vw, 5rem); /* Gap fluido: mínimo 2rem, preferido 4vw, máximo 5rem */
   }
 }
